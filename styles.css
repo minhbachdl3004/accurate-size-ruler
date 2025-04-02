@@ -95,24 +95,41 @@ option {
 }
 
 .ruler-container {
-    background: white;
-    border-radius: 14px;
-    padding: 1.75rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    margin-bottom: 1.75rem;
-    position: relative;
-    height: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 35px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ruler {
-    position: relative;
-    height: 70px;
+    height: 60px;
     width: 100%;
-    max-width: 300px; /* Adjust as needed */
-    margin: 0 auto;
+    position: relative;
+}
+
+.tick {
+    position: absolute;
+    top: 0;  
+    border-left: 1px solid #333;
+    height: 20px;
+}
+
+.tick.major {
+    height: 30px;
+    border-left-width: 2px;
+}
+
+.tick-label {
+    position: absolute;
+    bottom: -25px;
+    left: -8px;
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
 }
 
 .ruler-scale {
@@ -144,39 +161,12 @@ option {
     font-size: 1rem;
 }
 
-.tick {
-    position: absolute;
-    bottom: 0;
-    width: 1.5px;
-    background: #333;
-}
-
-.tick.major {
-    height: 30px;
-}
-
-.tick.minor {
-    height: 18px;
-    opacity: 0.6;
-}
-
-.tick-label {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 13px;
-    color: #666;
-    font-weight: 500;
-}
-
-
-
 .device-info {
     background: white;
     padding: 1.5rem;
     border-radius: 14px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    margin: 15px 0px;
 }
 
 .info-row {
@@ -202,7 +192,7 @@ option {
     font-weight: 500;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     body {
         padding: 1.5rem;
     }
@@ -232,8 +222,7 @@ option {
   .measure-slider {
     -webkit-appearance: none;
     appearance: none;
-    height: 10px;
-    background: #ddd;
+    height: 15px;
     border-radius: 5px;
     outline: none;
     transition: opacity 0.2s;
@@ -241,19 +230,19 @@ option {
   
   .measure-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 35px;
     background: #4CAF50;
-    border-radius: 50%;
     cursor: pointer;
+    margin-top: -15px; /* Center vertically */
+    border-radius: 0;
   }
   
   .measure-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 2px;
+    height: 30px;
     background: #4CAF50;
-    border-radius: 50%;
     cursor: pointer;
+    border-radius: 0;
+    border: none;
   }
-  

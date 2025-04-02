@@ -1,5 +1,5 @@
 // Complete Apple device database with PPI and release years
-const appleDevices = {
+const devices = {
     iphones: [
         { id: 'iphone-16-pro-max', name: 'iPhone 16 Pro Max', screenSize: 6.9, scaleFactor: 3, ppi: 458, year: 2025 },
         { id: 'iphone-16-pro', name: 'iPhone 16 Pro', screenSize: 6.3, scaleFactor: 3, ppi: 460, year: 2025 },
@@ -38,10 +38,7 @@ const appleDevices = {
         { id: 'ipod-touch-7', name: 'iPod touch (7th gen)', screenSize: 4, scaleFactor: 2, ppi: 326, year: 2019 },
         { id: 'ipod-touch-6', name: 'iPod touch (6th gen)', screenSize: 4, scaleFactor: 2, ppi: 326, year: 2015 },
         { id: 'ipod-touch-5', name: '::contentReference[oaicite:0]{index=0'}
-    ]
-}
-
-const androidDevices = {
+    ],
     samsung: [
         { id: 'galaxy-s21-ultra', name: 'Samsung Galaxy S21 Ultra', screenSize: 6.8, scaleFactor: 4, ppi: 515, year: 2021 },
         { id: 'galaxy-s20', name: 'Samsung Galaxy S20', screenSize: 6.2, scaleFactor: 3, ppi: 563, year: 2020 },
@@ -86,10 +83,10 @@ function initDeviceSelector() {
     select.innerHTML = '';
 
     // Add categories and devices
-    for (const category in androidDevices) {
+    for (const category in devices) {
         const group = document.createElement('optgroup');
         group.label = category.charAt(0).toUpperCase() + category.slice(1); // Capitalize category name
-        androidDevices[category].forEach(device => {
+        devices[category].forEach(device => {
             const option = new Option(`${device.name} (${device.year})`, device.id);
             group.appendChild(option);
         });
@@ -108,8 +105,8 @@ function handleDeviceSelection(event) {
 
     // Find the selected device in all categories
     let selectedDevice = null;
-    for (const category in androidDevices) {
-        selectedDevice = androidDevices[category].find(d => d.id === deviceId);
+    for (const category in devices) {
+        selectedDevice = devices[category].find(d => d.id === deviceId);
         if (selectedDevice) break;
     }
 
@@ -181,15 +178,20 @@ function updateDeviceCard(device) {
 function createRuler(ppi, scaleFactor) {
     const pxPerCm = (ppi / 2.54) / scaleFactor;
     const ruler = document.getElementById('ruler');
+    const rulerWidth = pxPerCm * 2;
+    const units = 2; // Numbers from 0 to 10
     
     // Clear existing ticks
     ruler.innerHTML = '';
+
+    // Set ruler width
+    ruler.style.width = rulerWidth + 'px';
     
     // Create ruler ticks (2cm ruler with mm markings)
     for (let i = 0; i <= 20; i++) {
         const tick = document.createElement('div');
         const position = (i / 10) * pxPerCm;
-        tick.className = `tick ${i % 10 === 0 ? 'major' : 'minor'}`;
+        tick.className = `tick ${i % 10 === 0 ? 'major' : ''}`;
         tick.style.left = `${position}px`;
         
         if (i % 10 === 0) {
@@ -275,10 +277,10 @@ function detectAppleDevice() {
     return null;
 }
 
-// Function to find device data from androidDevices structure
+// Function to find device data from devices structure
 function getDeviceData(deviceId) {
-    for (const category in androidDevices) {
-        const device = androidDevices[category].find(d => d.id === deviceId);
+    for (const category in devices) {
+        const device = devices[category].find(d => d.id === deviceId);
         if (device) return device;
     }
     return null;
@@ -316,6 +318,3 @@ function setSliderWidth(deviceId) {
 
 // Initialize slider width on page load
 window.onload = setSliderWidth;
-
-// Adjust slider width on window resize
-window.addEventListener('resize', setSliderWidth);

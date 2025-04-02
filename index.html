@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Apple Device Screen Ruler</h1>
+        <h1>Mobile Device Screen Ruler</h1>
         
         <div class="device-selector">
-            <label for="device-select">Select Your Apple Device:</label>
+            <label for="device-select">Select Your Mobile Device:</label>
             <select id="device-select" class="device-dropdown">
                 <optgroup label="iPhone (2019-2023)">
                     <!-- Options will be added by JavaScript -->
@@ -33,35 +33,30 @@
         </div>
         
         <div class="ruler-container">
-            <div class="ruler" id="ruler">
-                <div class="ruler-scale"></div>
-                <div class="slider" id="slider"></div>
-            </div>
+            <div class="ruler" id="ruler" style="border-top: 2px solid #333;"></div>
             <div class="ruler" id="ruler slider">
                 <div class="slider-container">
                 <input type="range" min="0" max="20" value="0" class="measure-slider" id="measure-slider">
-            </div></div>
+            </div>
             
             <div class="measurement">
                 Measurement: <span id="measurement-value">0</span> mm
             </div>
         </div>
-        
-        
-
-        <div class="device-info">
-            <div class="info-row">
-                <span>Selected Device:</span>
-                <span id="selected-device">None selected</span>
-            </div>
-            <div class="info-row">
-                <span>Screen PPI:</span>
-                <span id="device-ppi">-</span>
-            </div>
-            <div class="info-row">
-                <span>Release Year:</span>
-                <span id="release-year">-</span>
-            </div>
+    </div>
+    
+    <div class="device-info">
+        <div class="info-row">
+            <span>Selected Device:</span>
+            <span id="selected-device">None selected</span>
+        </div>
+        <div class="info-row">
+            <span>Screen PPI:</span>
+            <span id="device-ppi">-</span>
+        </div>
+        <div class="info-row">
+            <span>Release Year:</span>
+            <span id="release-year">-</span>
         </div>
     </div>
 
