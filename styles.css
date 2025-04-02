@@ -192,7 +192,7 @@ option {
     font-weight: 500;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 300px) {
     body {
         padding: 1.5rem;
     }

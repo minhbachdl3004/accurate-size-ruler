@@ -37,7 +37,6 @@ const devices = {
     ipods: [
         { id: 'ipod-touch-7', name: 'iPod touch (7th gen)', screenSize: 4, scaleFactor: 2, ppi: 326, year: 2019 },
         { id: 'ipod-touch-6', name: 'iPod touch (6th gen)', screenSize: 4, scaleFactor: 2, ppi: 326, year: 2015 },
-        { id: 'ipod-touch-5', name: '::contentReference[oaicite:0]{index=0'}
     ],
     samsung: [
         { id: 'galaxy-s21-ultra', name: 'Samsung Galaxy S21 Ultra', screenSize: 6.8, scaleFactor: 4, ppi: 515, year: 2021 },
